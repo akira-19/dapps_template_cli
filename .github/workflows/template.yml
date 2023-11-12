@@ -1,0 +1,22 @@
+name: Zip Directory
+
+on:
+  push:
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    if: contains(github.event.head_commit.modified, 'templates/contract/erc721/')
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Zip the directory
+        run: zip -r erc721.zip templates/contract/erc721/
+
+      - name: Upload ZIP as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: templates/zips
+          path: erc721.zip
