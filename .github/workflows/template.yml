@@ -6,14 +6,14 @@ on:
 jobs:
   job1:
     runs-on: ubuntu-latest
-    if: contains(github.event.head_commit.modified, 'templates/contract/erc721/')
+    if: contains(github.event.head_commit.modified, 'templates/contracts/erc721/')
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
 
       - name: Zip the directory
-        run: zip -r erc721.zip templates/contract/erc721/
+        run: zip -r erc721.zip templates/contracts/erc721/
 
       - name: Upload ZIP as artifact
         uses: actions/upload-artifact@v2
